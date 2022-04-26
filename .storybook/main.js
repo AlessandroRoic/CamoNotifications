@@ -7,7 +7,6 @@ module.exports = {
     '@storybook/addon-a11y',
     '@storybook/addon-interactions',
     '@storybook/addon-jest',
-    '@storybook/preset-scss',
     'storybook-dark-mode'
   ],
   core: {

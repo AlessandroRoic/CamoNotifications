@@ -1,3 +1,4 @@
-import { Notification } from './components/Notification';
+import { Notification, NotificationProps, NotificationType } from './components/Notification';
 
-export default { Notification };
+export { Notification, NotificationType };
+export type { NotificationProps };

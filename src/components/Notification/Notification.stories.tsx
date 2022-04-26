@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import { Notification, NotificationProps, NotificationType } from '../components/Notification';
+import { Notification, NotificationProps, NotificationType } from './index';
 
 export default {
   title: 'Notification',
@@ -16,6 +16,8 @@ Cookie.args = {
   id: 'cookie',
   type: NotificationType.COOKIE,
   title: 'Warning',
+  isOpen: true,
+  onClose: () => {},
   subtitle: 'Accept Cookies',
   content: 'Click here to accept cookies:',
 };
