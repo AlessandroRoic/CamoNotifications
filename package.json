@@ -6,6 +6,7 @@
   ],
   "main": "./dist/camo-notifications.umd.js",
   "module": "./dist/camo-notifications.es.js",
+  "homepage": "https://alessandroroic.github.io/CamoNotifications",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
