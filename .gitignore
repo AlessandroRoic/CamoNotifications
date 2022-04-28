@@ -7,6 +7,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+out4597
+coverage
 node_modules
 dist
 dist-ssr

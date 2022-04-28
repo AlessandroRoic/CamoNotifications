@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { HarmonyConfig, HarmonyType, NotificationProps, Position } from './Notification.types';
 import { CloseButtonWrapper, NotificationWrapper, StyledNotification } from './Notification.style';
 
-export function Notification(props: NotificationProps) {
-  const { id, type, position, harmonyType, title, subtitle, content, customStyle, isOpen, onClose } = props;
+export default function Notification(props: NotificationProps): React.ReactElement | null {
+  const { id, notificationType, position, harmonyType, title, subtitle, content, customStyle, isOpen, onClose } = props;
 
   const [notificationStyle, setNotificationStyle]: [React.CSSProperties, (value: React.CSSProperties) => void] = useState({});
 
@@ -50,7 +50,7 @@ export function Notification(props: NotificationProps) {
     return [h, s, l];
   };
 
-  const getHarmonyConfig = (harmony: HarmonyType): HarmonyConfig => {
+  const getHarmonyConfig = (harmony?: HarmonyType): HarmonyConfig => {
     switch (harmony) {
       case HarmonyType.SPLIT:
         return { start: 150, end: 210, interval: 1 };
@@ -91,7 +91,7 @@ export function Notification(props: NotificationProps) {
     return (brightest + 0.05) / (darkest + 0.05);
   };
 
-  const getColorHarmony = (rgba: string, harmony: HarmonyType = HarmonyType.COMPLIMENTARY): string[] => {
+  const getColorHarmony = (rgba: string, harmony?: HarmonyType): string[] => {
     const [h, s, l] = parseRGBtoHSL(rgba);
     const colors = [];
     const { start, end, interval } = getHarmonyConfig(harmony);
@@ -123,7 +123,7 @@ export function Notification(props: NotificationProps) {
     }
 
     setNotificationStyle({
-      ...(customStyle || generatedStyle || {}),
+      ...(customStyle || generatedStyle),
       zIndex: customStyle?.zIndex || 9999,
     });
   }, [isOpen]);
@@ -131,7 +131,7 @@ export function Notification(props: NotificationProps) {
   if (!isOpen) return null;
   return ReactDOM.createPortal(
     <NotificationWrapper position={position} id={id}>
-      <StyledNotification type={type} style={notificationStyle}>
+      <StyledNotification notificationType={notificationType} style={notificationStyle}>
         <CloseButtonWrapper>
           <button type="button" onClick={onClose} style={{ fill: notificationStyle.color }}>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -156,14 +156,3 @@ Notification.defaultProps = {
   position: Position.CENTER,
   harmonyType: HarmonyType.COMPLIMENTARY,
 };
-
-export function useCamoNotification() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
-
-  return {
-    isOpen,
-    toggle,
-  };
-}

@@ -22,7 +22,7 @@ export enum Position {
 
 export interface NotificationProps {
   id: string;
-  type: NotificationType;
+  notificationType: NotificationType;
   isOpen: boolean;
   onClose: (event: any) => void;
   position?: Position;

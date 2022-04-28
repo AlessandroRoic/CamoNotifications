@@ -5,7 +5,7 @@ import { NotificationType, Position } from './Notification.types';
 
 const blackShadow = '#333';
 
-const getWidth = (type: NotificationType): string => {
+export const getWidth = (type: NotificationType): string => {
   switch (type) {
     case NotificationType.COOKIE:
       return '80vw';
@@ -19,13 +19,13 @@ const getWidth = (type: NotificationType): string => {
   }
 };
 
-const getPosition = (position: Position): any => {
+export const getPosition = (position: Position): any => {
   switch (position) {
     case Position.CENTER:
       return {
         top: '50%',
         left: '50%',
-        transform: 'translate(-50%, -50%)',
+        transform: 'translate(-50%,-50%)',
       };
     case Position.CENTER_LEFT:
       return {
@@ -81,11 +81,11 @@ export const NotificationWrapper = styled.div((props: { position: Position }) =>
   ...getPosition(props.position),
 }));
 
-export const StyledNotification = styled.div((props: { type: NotificationType }) => ({
+export const StyledNotification = styled.div((props: { notificationType: NotificationType }) => ({
   borderRadius: '10px',
   boxShadow: `0 0 10px ${blackShadow}`,
   padding: '20px',
-  width: getWidth(props.type),
+  width: getWidth(props.notificationType),
 }));
 
 export const CloseButtonWrapper = styled.div`
