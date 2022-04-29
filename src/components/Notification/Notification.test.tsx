@@ -6,9 +6,6 @@ import { getPosition, getWidth } from './Notification.style';
 
 const defaultProps: NotificationProps = { id: 'test', isOpen: true, onClose: () => {}, notificationType: NotificationType.MEDIUM };
 const customRender = (props: NotificationProps = defaultProps) => render(<Notification {...props} />);
-const harmonyTypes = Object.values(HarmonyType)
-  .filter((v) => !Number.isNaN(v))
-  .map((type) => HarmonyType[type as keyof typeof HarmonyType]);
 
 function TestWrapper(props: { initialState: any } = { initialState: true }) {
   const { initialState } = props;
@@ -48,7 +45,7 @@ describe('notification component', () => {
     expect(component.baseElement).toMatchSnapshot();
   });
 
-  it.each(harmonyTypes)('should render harmony correctly', (harmonyType: HarmonyType) => {
+  it.each(Object.values(HarmonyType))('should render harmony correctly', (harmonyType: HarmonyType) => {
     const component = customRender({ ...defaultProps, harmonyType });
     expect(component.baseElement).toMatchSnapshot();
   });

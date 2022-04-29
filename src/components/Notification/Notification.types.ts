@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 export enum NotificationType {
   COOKIE = 'cookie',
@@ -30,15 +30,15 @@ export interface NotificationProps {
   title?: string;
   subtitle?: string;
   content?: React.ReactNode | string | HTMLElement;
-  customStyle?: React.CSSProperties;
+  customStyle?: CSSProperties;
 }
 
 export enum HarmonyType {
-  COMPLIMENTARY,
-  SPLIT,
-  TRIAD,
-  TETRAD,
-  ANALOGOUS,
+  COMPLIMENTARY = 'complimentary',
+  SPLIT = 'split',
+  TRIAD = 'triad',
+  TETRAD = 'tetrad',
+  ANALOGOUS = 'analogous',
 }
 
 export interface HarmonyConfig {

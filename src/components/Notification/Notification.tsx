@@ -113,17 +113,14 @@ export default function Notification(props: NotificationProps): React.ReactEleme
 
   useEffect(() => {
     const { backgroundColor } = window.getComputedStyle(document.body);
-    let generatedStyle;
-
-    if (!customStyle) {
-      generatedStyle = {
-        color: getFontColor(backgroundColor),
-        backgroundColor: getColorHarmony(backgroundColor, harmonyType)[0],
-      };
-    }
+    const generatedStyle = {
+      color: getFontColor(backgroundColor),
+      backgroundColor: getColorHarmony(backgroundColor, harmonyType)[0],
+    };
 
     setNotificationStyle({
-      ...(customStyle || generatedStyle),
+      ...generatedStyle,
+      ...(customStyle || {}),
       zIndex: customStyle?.zIndex || 9999,
     });
   }, [isOpen]);

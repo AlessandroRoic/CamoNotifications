@@ -1,12 +1,25 @@
 {
   "name": "camo-notifications",
   "description": "Notifications library that disguises itself in your application",
+  "author": "Alessandro Roic https://alessandroroic.github.io",
+  "keywords": [
+    "react",
+    "styled components",
+    "notification",
+    "high performance"
+  ],
+  "licence": "see licence at LICENSE.md",
+  "homepage": "https://alessandroroic.github.io/CamoNotifications",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlessandroRoic/CamoNotifications"
+  },
+  "bugs": "https://github.com/AlessandroRoic/CamoNotifications/issues",
   "files": [
     "dist"
   ],
   "main": "./dist/camo-notifications.umd.js",
   "module": "./dist/camo-notifications.es.js",
-  "homepage": "https://alessandroroic.github.io/CamoNotifications",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
